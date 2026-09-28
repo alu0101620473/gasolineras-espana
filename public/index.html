@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gasolineras más baratas de España</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0b6b3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Gasolineras">
+<style>
+:root{--bg:#f3f5f2;--card:#fff;--ink:#14231b;--muted:#5d6b62;--line:#dfe5e0;--accent:#0b6b3a;--accent-ink:#fff;--best:#e8f5ec;--err:#a4262c}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1712;--card:#18231c;--ink:#e8f0ea;--muted:#9bab9f;--line:#2a3a2f;--accent:#4fc283;--accent-ink:#06170d;--best:#1c3326;--err:#ff8a8f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0 4px}
+.sub{color:var(--muted);margin:0 0 16px;font-size:.9rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:12px}
+label,legend{font-weight:600;font-size:.85rem}
+fieldset{border:0;margin:0;padding:0}
+.row{display:flex;gap:8px}
+input,select,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:11px 12px;background:var(--card);color:var(--ink)}
+input{flex:1;min-width:0}
+button{cursor:pointer;font-weight:600}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{font-weight:500;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.chips input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chips input:focus-visible+label{outline:3px solid var(--accent);outline-offset:2px}
+#status{margin:14px 0 6px;font-size:.9rem;color:var(--muted)}
+#status.error{color:var(--err);font-weight:600}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+.card.best{background:var(--best);border-color:var(--accent)}
+.brand{font-weight:700}
+.addr{color:var(--muted);font-size:.88rem}
+.price{font-size:2rem;font-weight:800;line-height:1;text-align:right;font-variant-numeric:tabular-nums}
+.price small{font-size:.9rem;font-weight:600;color:var(--muted)}
+.meta{text-align:right;font-size:.85rem;color:var(--muted)}
+.card a{grid-column:1/-1;margin-top:8px;text-align:center;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:9px;font-weight:600}
+.sk{height:104px;border-radius:12px;background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:sk 1.2s linear infinite}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Gasolineras más baratas</h1>
+  <p class="sub">Precios oficiales del Ministerio para la Transición Ecológica. Toda España.</p>
+
+  <section class="panel" aria-label="Filtros">
+    <div>
+      <button id="geo" class="primary" type="button" style="width:100%">Usar mi ubicación actual</button>
+    </div>
+    <div>
+      <label for="q">O busca por código postal o municipio</label>
+      <div class="row" style="margin-top:6px">
+        <input id="q" placeholder="Ej. 28013 o Santa Cruz de Tenerife" autocomplete="off" enterkeyhint="search">
+        <button id="go" type="button">Buscar</button>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Combustible</legend>
+      <div class="chips" id="fuels">
+        <input type="radio" name="fuel" id="f1" value="gasolina95" checked><label for="f1">Gasolina 95</label>
+        <input type="radio" name="fuel" id="f2" value="gasolina98"><label for="f2">Gasolina 98</label>
+        <input type="radio" name="fuel" id="f3" value="diesel"><label for="f3">Diésel</label>
+        <input type="radio" name="fuel" id="f4" value="dieselPremium"><label for="f4">Diésel Premium</label>
+      </div>
+    </fieldset>
+    <div>
+      <label for="radius">Radio de búsqueda</label>
+      <select id="radius" style="width:100%;margin-top:6px">
+        <option value="5">5 km</option><option value="10" selected>10 km</option>
+        <option value="20">20 km</option><option value="50">50 km</option>
+      </select>
+    </div>
+  </section>
+
+  <div id="status" role="status" aria-live="polite"></div>
+  <ul id="list"></ul>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+let last = null; // última búsqueda { lat, lon } o { q }
+
+function setStatus(msg, isError = false) {
+  $("status").textContent = msg;
+  $("status").className = isError ? "error" : "";
+}
+
+function skeletons() {
+  $("list").innerHTML = '<li class="sk"></li>'.repeat(4);
+}
+
+async function run(params) {
+  last = params;
+  const p = new URLSearchParams({ ...params, fuel: document.querySelector("input[name=fuel]:checked").value, radius: $("radius").value });
+  setStatus("Buscando gasolineras…");
+  skeletons();
+  try {
+    const res = await fetch("/api/search?" + p);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Error inesperado");
+    render(data);
+  } catch (e) {
+    $("list").innerHTML = "";
+    setStatus(e.message || "No se pudo conectar con el servidor.", true);
+  }
+}
+
+function render({ center, results, fecha }) {
+  if (!results.length) {
+    $("list").innerHTML = "";
+    return setStatus(`Sin gasolineras con ese combustible en ${$("radius").value} km de ${center.label}. Prueba con un radio mayor.`, true);
+  }
+  setStatus(`${results.length} resultados cerca de ${center.label}${fecha ? " · datos de " + fecha : ""}`);
+  $("list").innerHTML = results.map((s, i) => `
+    <li class="card${i === 0 ? " best" : ""}">
+      <div><div class="brand">${esc(s.rotulo)}</div>
+      <div class="addr">${esc(s.direccion)}, ${esc(s.cp)} ${esc(s.municipio)} (${esc(s.provincia)})</div></div>
+      <div class="price">${s.precio.toFixed(3).replace(".", ",")} <small>€/l</small></div>
+      <div class="meta">${i === 0 ? "Más barata" : ""}</div>
+      <div class="meta">a ${String(s.dist).replace(".", ",")} km</div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}" target="_blank" rel="noopener">Cómo llegar</a>
+    </li>`).join("");
+}
+
+$("geo").onclick = () => {
+  if (!navigator.geolocation) return setStatus("Tu navegador no admite geolocalización. Busca por código postal.", true);
+  setStatus("Obteniendo tu ubicación…");
+  navigator.geolocation.getCurrentPosition(
+    (pos) => run({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
+    (err) => setStatus(err.code === 1
+      ? "Permiso de ubicación denegado. Actívalo en el navegador o busca por código postal."
+      : "No se pudo obtener tu ubicación. Busca por código postal.", true),
+    { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
+  );
+};
+
+function manual() {
+  const q = $("q").value.trim();
+  if (!q) return setStatus("Escribe un código postal de 5 dígitos o un municipio.", true);
+  run({ q });
+}
+$("go").onclick = manual;
+$("q").addEventListener("keydown", (e) => e.key === "Enter" && manual());
+// Al cambiar combustible o radio se repite la última búsqueda
+document.querySelectorAll("input[name=fuel]").forEach((r) => r.addEventListener("change", () => last && run(last)));
+$("radius").addEventListener("change", () => last && run(last));
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "Gasolineras Baratas España",
+  "short_name": "GasolinaLowCost",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2933/2933884.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
