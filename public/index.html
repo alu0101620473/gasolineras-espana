@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gasolineras más baratas de España</title>
-<link rel="manifest" href="/manifest.json">
+<!--<link rel="manifest" href="/manifest.json">-->
 <meta name="theme-color" content="#0b6b3a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -54,6 +54,68 @@ ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .sk{height:104px;border-radius:12px;background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:sk 1.2s linear infinite}
 @keyframes sk{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){.sk{animation:none}}
+/* Estilos para el contenido editorial y legal */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+.editorial-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.editorial-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+.editorial-card p, .editorial-card li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.editorial-card ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+.legal-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+.legal-box h2 {
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin-top: 0;
+}
+.legal-box p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+.stats-table th, .stats-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.stats-table th {
+  color: var(--ink);
+}
+.stats-table td {
+  color: var(--muted);
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8980443084638530" crossorigin="anonymous"></script>
 </head>
@@ -165,35 +227,158 @@ $("q").addEventListener("keydown", (e) => e.key === "Enter" && manual());
 document.querySelectorAll("input[name=fuel]").forEach((r) => r.addEventListener("change", () => last && run(last)));
 $("radius").addEventListener("change", () => last && run(last));
 </script>
-<!-- Sección informativa y FAQ para usuarios y Google AdSense -->
- <!-- Sección informativa y FAQ en Dark Mode -->
-  <section style="max-width: 800px; margin: 40px auto 20px; padding: 25px; background: #161b22; border: 1px solid #30363d; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-family: system-ui, -apple-system, sans-serif; color: #c9d1d9; line-height: 1.6;">
-    <h2 style="color: #58a6ff; font-size: 1.3rem; margin-top: 0;">¿Cómo encontrar la gasolina más barata cerca de ti?</h2>
-    <p>
-      Nuestra herramienta consulta en tiempo real la base de datos oficial del <strong style="color: #f0f6fc;">Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO)</strong>. Gracias a la geolocalización de tu dispositivo, calculamos la distancia exacta a cada estación de servicio en España y filtramos los precios más competitivos de Gasolina 95, Diésel y otros carburantes para ayudarte a ahorrar en cada repostaje.
-    </p>
+<!-- SECCIÓN EDITORIAL Y DE VALOR PARA USUARIOS Y GOOGLE ADSENSE -->
+<section style="margin-top: 32px;">
+  <h2 style="font-size: 1.4rem; margin-bottom: 8px;">Guía y Análisis del Mercado de Carburantes</h2>
+  <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;">
+    Información técnica y económica sobre el precio de los hidrocarburos en España, metodologías de cálculo del Ministerio y claves para optimizar el gasto por kilómetro.
+  </p>
 
-    <h3 style="color: #f0f6fc; font-size: 1.1rem; margin-top: 25px;">Consejos prácticos para ahorrar combustible</h3>
-    <ul style="padding-left: 20px;">
-      <li style="margin-bottom: 8px;"><strong style="color: #3fb950;">Elige el día adecuado:</strong> Históricamente, los lunes y martes suelen registrar precios medios más bajos que los fines de semana o vísperas de festivos.</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #3fb950;">Revisa la presión de los neumáticos:</strong> Circular con 0,5 bares menos de presión puede elevar el consumo hasta un 4% y desgastar prematuramente las ruedas.</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #3fb950;">Conducción progresiva:</strong> Mantener una velocidad uniforme, evitar frenazos y anticiparse al tráfico reduce sensiblemente el gasto por kilómetro.</li>
-    </ul>
+  <div class="editorial-grid">
+    <article class="editorial-card">
+      <h3>¿Cómo se fija el precio del combustible en España?</h3>
+      <p>
+        El precio de venta al público de la gasolina y el diésel no depende únicamente de la cotización internacional del barril de petróleo Brent. Su estructura de costes se compone de:
+      </p>
+      <ul>
+        <li><strong>Coste de la materia prima:</strong> Representa entre el 30% y el 35% del valor final.</li>
+        <li><strong>Impuestos estatales y autonómicos:</strong> El Impuesto Especial sobre Hidrocarburos y el IVA (21%) suponen más del 45% del importe total por litro.</li>
+        <li><strong>Márgenes de distribución y logística:</strong> Costes de almacenamiento de CLH/Exolum, transporte terrestre y margen comercial de la estación de servicio.</li>
+      </ul>
+    </article>
 
-    <h3 style="color: #f0f6fc; font-size: 1.1rem; margin-top: 25px;">Preguntas Frecuentes (FAQ)</h3>
-    <div style="margin-top: 10px;">
-      <h4 style="margin: 10px 0 5px; color: #58a6ff;">¿Con qué frecuencia se actualizan los precios?</h4>
-      <p style="margin: 0 0 15px; color: #8b949e;">Las estaciones de servicio están obligadas por normativa a remitir sus tarifas al MITECO con cada cambio, por lo que los datos se sincronizan de forma continua a lo largo del día.</p>
+    <article class="editorial-card">
+      <h3>Gasolina 95 vs. Gasolina 98: ¿Cuál elegir?</h3>
+      <p>
+        El octanaje mide la resistencia del combustible a la autodetonación bajo compresión en la cámara del motor:
+      </p>
+      <ul>
+        <li><strong>Gasolina 95:</strong> Diseñada para la gran mayoría de vehículos de turismo comerciales. Ofrece una combustión equilibrada y mantiene el consumo homologado por el fabricante.</li>
+        <li><strong>Gasolina 98:</strong> Indicada exclusivamente para motores de alta compresión o deportivos. En motores convencionales no aporta potencia extra ni reduce el consumo que justifique su sobrecoste.</li>
+      </ul>
+    </article>
 
-      <h4 style="margin: 10px 0 5px; color: #58a6ff;">¿Se guardan mis datos o mi ubicación?</h4>
-      <p style="margin: 0 0 15px; color: #8b949e;">No. El permiso GPS se procesa en el navegador de tu móvil u ordenador únicamente para ordenar las estaciones cercanas; no almacenamos ningún dato de localización en servidores.</p>
+    <article class="editorial-card">
+      <h3>Estaciones Low-Cost vs. Marcas Tradicionales</h3>
+      <p>
+        Todos los combustibles distribuidos en territorio nacional parten de las mismas terminales logísticas y cumplen estrictamente los estándares de calidad de la norma europea <strong>EN 228</strong> (gasolina) y <strong>EN 590</strong> (gasóleo).
+      </p>
+      <p>
+        La diferencia de precio entre redes automatizadas e hipermercados frente a marcas tradicionales radica en los costes de personal, los programas de fidelización y los paquetes de aditivos antioxidantes y detergentes que cada petrolera añade en la carga del camión cisterna.
+      </p>
+    </article>
+
+    <article class="editorial-card">
+      <h3>Estrategias de Conducción Eficiente</h3>
+      <p>
+        Reducir el gasto medio no solo consiste en buscar la estación más económica, sino en aplicar pautas de eficiencia energética:
+      </p>
+      <ul>
+        <li><strong>Presión de neumáticos:</strong> Rodar con 0,5 bares menos eleva el rozamiento y dispara el consumo un 4%.</li>
+        <li><strong>Uso del freno motor:</strong> Al levantar el pie con una marcha engranada, el sistema de inyección corta el suministro de carburante (consumo 0,0 l/100km).</li>
+        <li><strong>Gestión de marchas:</strong> Insertar marchas largas en regímenes de entre 1.500 y 2.000 rpm en motores diésel, y 2.000 y 2.500 rpm en gasolina.</li>
+      </ul>
+    </article>
+  </div>
+
+  <!-- TABLA INFORMATIVA DE RANGOS DE PRECIO -->
+  <div class="editorial-card" style="margin-top: 16px;">
+    <h3>Estructura Comparativa de Carburantes habituales</h3>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>Carburante</th>
+          <th>Tipo de Motor</th>
+          <th>Normativa de Calidad</th>
+          <th>Perfil de Uso Recomendado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gasolina 95 E5</strong></td>
+          <td>Motores de gasolina estándar</td>
+          <td>UNE-EN 228</td>
+          <td>Uso urbano e interurbano general</td>
+        </tr>
+        <tr>
+          <td><strong>Gasolina 98 E5</strong></td>
+          <td>Motores de alto rendimiento / turbo</td>
+          <td>UNE-EN 228</td>
+          <td>Vehículos deportivos de alta compresión</td>
+        </tr>
+        <tr>
+          <td><strong>Gasóleo A (Diésel)</strong></td>
+          <td>Motores diésel de inyección directa</td>
+          <td>UNE-EN 590</td>
+          <td>Largas distancias y trayectos de autopista</td>
+        </tr>
+        <tr>
+          <td><strong>Gasóleo Premium</strong></td>
+          <td>Motores diésel modernos (Common Rail)</td>
+          <td>UNE-EN 590 + Aditivos</td>
+          <td>Mayor protección de inyectores y filtro DPF</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECCIÓN FAQ AMPLIA -->
+<section style="margin-top: 32px;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 12px;">Preguntas Frecuentes sobre el Servicio</h2>
+  <div class="editorial-grid">
+    <div class="editorial-card">
+      <h3>¿De dónde proceden los datos de precios?</h3>
+      <p>
+        La información proviene en tiempo real del registro telemático del Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO). Por ley, cada estación de servicio en España está obligada a reportar cualquier variación tarifaria en el momento exacto en que entra en vigor en el surtidor.
+      </p>
     </div>
-  </section>
-<footer style="margin-top: 40px; padding: 20px; text-align: center; font-size: 0.85rem; color: #666; border-top: 1px solid #eee;">
-  <p>© 2026 Gasolineras Baratas España. Precios oficiales del MITECO.</p>
-  <p>
-    <a href="#privacidad" onclick="alert('Esta aplicación no almacena datos personales. Los permisos de ubicación se utilizan exclusivamente en tu dispositivo para ordenar las gasolineras más cercanas y no se registran en ningún servidor.')" style="color: #0070f3; text-decoration: underline; margin-right: 15px;">Política de Privacidad</a>
-    <a href="#cookies" onclick="alert('Utilizamos cookies y tecnologías similares para personalizar anuncios y analizar el tráfico a través de Google AdSense.')" style="color: #0070f3; text-decoration: underline;">Uso de Cookies</a>
+    <div class="editorial-card">
+      <h3>¿Por qué varían los precios entre días de la semana?</h3>
+      <p>
+        Estudios de la Comisión Nacional de los Mercados y la Competencia (CNMC) revelan que los precios suelen experimentar ajustes a la baja los lunes y experimentar incrementos progresivos hacia el viernes y fines de semana, coincidiendo con picos de desplazamiento por ocio.
+      </p>
+    </div>
+    <div class="editorial-card">
+      <h3>¿Cómo localiza la aplicación las estaciones?</h3>
+      <p>
+        Mediante la API de Geolocation estándar del navegador se calculan las coordenadas matemáticas de latitud y longitud del dispositivo. La distancia en línea recta hacia cada punto de venta se computa localmente mediante la fórmula del semiverseno (haversine).
+      </p>
+    </div>
+    <div class="editorial-card">
+      <h3>¿Existe algún coste por utilizar esta herramienta?</h3>
+      <p>
+        El acceso a este portal de consulta es completamente libre y gratuito para todos los conductores y usuarios. El mantenimiento de la infraestructura técnica se financia exclusivamente mediante inserciones publicitarias contextuales.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTO LEGAL EN PÁGINA (ELIMINANDO LOS POPOPS JAVASCRIPT) -->
+<footer style="margin-top: 48px; border-top: 1px solid var(--line); padding-top: 24px;">
+  <div class="legal-box" id="privacidad">
+    <h2>Política de Privacidad y Tratamiento de Datos</h2>
+    <p>
+      En cumplimiento del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), le informamos de que este sitio web no recopila ni almacena información personal identificable. Los datos de geolocalización solicitados al pulsar "Usar mi ubicación" se procesan de manera estrictamente local y efímera en la memoria RAM del navegador del cliente con el único propósito de calcular distancias métricas hacia los puntos de suministro. Ninguna coordenada geográfica se transmite ni almacena en bases de datos externas.
+    </p>
+  </div>
+
+  <div class="legal-box" id="cookies" style="margin-top: 16px;">
+    <h2>Política de Cookies y Tecnologías de Publicidad</h2>
+    <p>
+      Este sitio web utiliza identificadores de cookies técnicas necesarias para el funcionamiento del servidor, así como servicios analíticos y de publicidad proporcionados por Google LLC (Google AdSense y Google Analytics 4). Estas herramientas emplean cookies y balizas web para recopilar información de navegación agregada y no personal, con el fin de auditar el tráfico web y mostrar contenidos publicitarios adecuados. Los usuarios pueden revocar el consentimiento o gestionar el bloqueo de cookies de terceros mediante los ajustes de privacidad de su navegador web en cualquier momento.
+    </p>
+  </div>
+
+  <div class="legal-box" id="aviso-legal" style="margin-top: 16px;">
+    <h2>Aviso Legal y Condiciones de Uso</h2>
+    <p>
+      Los datos de estaciones de servicio, denominaciones comerciales y tarifas horarias expuestos en esta plataforma se obtienen de fuentes oficiales del Gobierno de España accesibles públicamente a través del portal de datos abiertos del MITECO. Aunque este portal realiza actualizaciones periódicas de sincronización, la tarifa vinculante legalmente es la marcada en el monolito y surtidor de la estación física en el momento del repostaje. El titular del sitio web no asume responsabilidad por discrepancias tarifarias temporales ajenas al sistema de consulta.
+    </p>
+  </div>
+
+  <p style="text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 24px;">
+    © 2026 Gasolineras Baratas España. Datos oficiales en tiempo real del MITECO.
   </p>
 </footer>
 </body>
