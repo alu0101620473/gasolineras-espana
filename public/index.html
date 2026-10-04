@@ -2,122 +2,124 @@
 <html lang="es">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TRETJF8KIQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRETJF8KIQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-TRETJF8KIQ');
-</script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gasolineras más baratas de España</title>
-<!--<link rel="manifest" href="/manifest.json">-->
-<meta name="theme-color" content="#0b6b3a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Gasolineras">
-<style>
-:root{--bg:#f3f5f2;--card:#fff;--ink:#14231b;--muted:#5d6b62;--line:#dfe5e0;--accent:#0b6b3a;--accent-ink:#fff;--best:#e8f5ec;--err:#a4262c}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1712;--card:#18231c;--ink:#e8f0ea;--muted:#9bab9f;--line:#2a3a2f;--accent:#4fc283;--accent-ink:#06170d;--best:#1c3326;--err:#ff8a8f}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:640px;margin:0 auto;padding:16px}
-h1{font-size:1.5rem;margin:8px 0 4px}
-.sub{color:var(--muted);margin:0 0 16px;font-size:.9rem}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:12px}
-label,legend{font-weight:600;font-size:.85rem}
-fieldset{border:0;margin:0;padding:0}
-.row{display:flex;gap:8px}
-input,select,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:11px 12px;background:var(--card);color:var(--ink)}
-input{flex:1;min-width:0}
-button{cursor:pointer;font-weight:600}
-button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.chips input{position:absolute;opacity:0;pointer-events:none}
-.chips label{font-weight:500;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
-.chips input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.chips input:focus-visible+label{outline:3px solid var(--accent);outline-offset:2px}
-#status{margin:14px 0 6px;font-size:.9rem;color:var(--muted)}
-#status.error{color:var(--err);font-weight:600}
-ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
-.card.best{background:var(--best);border-color:var(--accent)}
-.brand{font-weight:700}
-.addr{color:var(--muted);font-size:.88rem}
-.price{font-size:2rem;font-weight:800;line-height:1;text-align:right;font-variant-numeric:tabular-nums}
-.price small{font-size:.9rem;font-weight:600;color:var(--muted)}
-.meta{text-align:right;font-size:.85rem;color:var(--muted)}
-.card a{grid-column:1/-1;margin-top:8px;text-align:center;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:9px;font-weight:600}
-.sk{height:104px;border-radius:12px;background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:sk 1.2s linear infinite}
-@keyframes sk{to{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){.sk{animation:none}}
-/* Estilos para el contenido editorial y legal */
-.editorial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-top: 14px;
-}
-.editorial-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.editorial-card h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
-  color: var(--accent);
-}
-.editorial-card p, .editorial-card li {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.editorial-card ul {
-  padding-left: 20px;
-  margin-bottom: 0;
-}
-.legal-box {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 24px;
-}
-.legal-box h2 {
-  font-size: 1.2rem;
-  color: var(--ink);
-  margin-top: 0;
-}
-.legal-box p {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
-  font-size: 0.85rem;
-}
-.stats-table th, .stats-table td {
-  padding: 10px;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-}
-.stats-table th {
-  color: var(--ink);
-}
-.stats-table td {
-  color: var(--muted);
-}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8980443084638530" crossorigin="anonymous"></script>
+    gtag('config', 'G-TRETJF8KIQ');
+  </script>
+  <meta name="google-site-verification" content="NjYBNoVtl0QqpnIGk0rtCjWj637onYDdzeMiiild080" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gasolineras más baratas de España | Precios MITECO</title>
+  <!--<link rel="manifest" href="/manifest.json">-->
+  <meta name="theme-color" content="#0b6b3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Gasolineras">
+  <style>
+    :root{--bg:#f3f5f2;--card:#fff;--ink:#14231b;--muted:#5d6b62;--line:#dfe5e0;--accent:#0b6b3a;--accent-ink:#fff;--best:#e8f5ec;--err:#a4262c}
+    @media (prefers-color-scheme:dark){:root{--bg:#0f1712;--card:#18231c;--ink:#e8f0ea;--muted:#9bab9f;--line:#2a3a2f;--accent:#4fc283;--accent-ink:#06170d;--best:#1c3326;--err:#ff8a8f}}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    main{max-width:640px;margin:0 auto;padding:16px}
+    h1{font-size:1.5rem;margin:8px 0 4px}
+    .sub{color:var(--muted);margin:0 0 16px;font-size:.9rem}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:12px}
+    label,legend{font-weight:600;font-size:.85rem}
+    fieldset{border:0;margin:0;padding:0}
+    .row{display:flex;gap:8px}
+    input,select,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:11px 12px;background:var(--card);color:var(--ink)}
+    input{flex:1;min-width:0}
+    button{cursor:pointer;font-weight:600}
+    button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+    :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .chips input{position:absolute;opacity:0;pointer-events:none}
+    .chips label{font-weight:500;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+    .chips input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+    .chips input:focus-visible+label{outline:3px solid var(--accent);outline-offset:2px}
+    #status{margin:14px 0 6px;font-size:.9rem;color:var(--muted)}
+    #status.error{color:var(--err);font-weight:600}
+    ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px}
+    .card.best{background:var(--best);border-color:var(--accent)}
+    .brand{font-weight:700}
+    .addr{color:var(--muted);font-size:.88rem}
+    .price{font-size:2rem;font-weight:800;line-height:1;text-align:right;font-variant-numeric:tabular-nums}
+    .price small{font-size:.9rem;font-weight:600;color:var(--muted)}
+    .meta{text-align:right;font-size:.85rem;color:var(--muted)}
+    .card a{grid-column:1/-1;margin-top:8px;text-align:center;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:9px;font-weight:600}
+    .sk{height:104px;border-radius:12px;background:linear-gradient(90deg,var(--line),var(--card),var(--line));background-size:200% 100%;animation:sk 1.2s linear infinite}
+    @keyframes sk{to{background-position:-200% 0}}
+    @media (prefers-reduced-motion:reduce){.sk{animation:none}}
+
+    /* Estilos para el contenido editorial y legal */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .editorial-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .editorial-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    .editorial-card p, .editorial-card li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .editorial-card ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+    .legal-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .legal-box h2 {
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-top: 0;
+    }
+    .legal-box p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+    .stats-table th, .stats-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+    .stats-table th {
+      color: var(--ink);
+    }
+    .stats-table td {
+      color: var(--muted);
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8980443084638530" crossorigin="anonymous"></script>
 </head>
 <body>
 <main>
@@ -227,8 +229,9 @@ $("q").addEventListener("keydown", (e) => e.key === "Enter" && manual());
 document.querySelectorAll("input[name=fuel]").forEach((r) => r.addEventListener("change", () => last && run(last)));
 $("radius").addEventListener("change", () => last && run(last));
 </script>
+
 <!-- SECCIÓN EDITORIAL Y DE VALOR PARA USUARIOS Y GOOGLE ADSENSE -->
-<section style="margin-top: 32px;">
+<section style="margin-top: 32px; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 16px;">
   <h2 style="font-size: 1.4rem; margin-bottom: 8px;">Guía y Análisis del Mercado de Carburantes</h2>
   <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;">
     Información técnica y económica sobre el precio de los hidrocarburos en España, metodologías de cálculo del Ministerio y claves para optimizar el gasto por kilómetro.
@@ -281,7 +284,6 @@ $("radius").addEventListener("change", () => last && run(last));
     </article>
   </div>
 
-  <!-- TABLA INFORMATIVA DE RANGOS DE PRECIO -->
   <div class="editorial-card" style="margin-top: 16px;">
     <h3>Estructura Comparativa de Carburantes habituales</h3>
     <table class="stats-table">
@@ -324,7 +326,7 @@ $("radius").addEventListener("change", () => last && run(last));
 </section>
 
 <!-- SECCIÓN FAQ AMPLIA -->
-<section style="margin-top: 32px;">
+<section style="margin-top: 32px; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 16px;">
   <h2 style="font-size: 1.3rem; margin-bottom: 12px;">Preguntas Frecuentes sobre el Servicio</h2>
   <div class="editorial-grid">
     <div class="editorial-card">
@@ -354,8 +356,8 @@ $("radius").addEventListener("change", () => last && run(last));
   </div>
 </section>
 
-<!-- TEXTO LEGAL EN PÁGINA (ELIMINANDO LOS POPOPS JAVASCRIPT) -->
-<footer style="margin-top: 48px; border-top: 1px solid var(--line); padding-top: 24px;">
+<!-- TEXTO LEGAL EN PÁGINA (SIN ALERTAS JAVASCRIPT) -->
+<footer style="margin-top: 48px; border-top: 1px solid var(--line); padding: 24px 16px; max-width: 900px; margin-left: auto; margin-right: auto;">
   <div class="legal-box" id="privacidad">
     <h2>Política de Privacidad y Tratamiento de Datos</h2>
     <p>
